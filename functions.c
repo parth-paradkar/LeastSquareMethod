@@ -61,6 +61,6 @@ void linecount(float x,float y,float xscale,float yscale){
     }*/
     xf=func_lines(x,xscale);
     yf=func_lines(y,yscale);
-    printf("For x coordinate %f:%0.2f lines after %f",xf.apna,xf.line,xf.prev);
+    printf("\nFor x coordinate %f:%0.2f lines after %f",xf.apna,xf.line,xf.prev);
     printf("\nFor y coordinate %f:%0.2f lines above %f",yf.apna,yf.line,yf.prev);
 }
