@@ -31,6 +31,7 @@ float line(float m,float c,float x){
 }
 
 int main(){
+	//maximum 100 points can be plotted
     pointset a[100];
     pointset b;
     int n,i;
@@ -45,6 +46,10 @@ int main(){
         printf("Invalid input!More than one reading is required.");
         return 0;
     }
+	if(n>100){
+		printf("Maximum 100 readings can be plotted!");
+		return 0;
+	}
     for(i=0;i<n;i++){
         printf("Enter the x coordinate: ");
         scanf("%f",&a[i].x);
@@ -60,6 +65,8 @@ int main(){
     b=mean(a,n);
     /*printf("%f",b.x);
     printf("%f",b.y);*/
+    //Formula for slope(m) and x intercept(c) according to the least square method
+    //This ensures equal number of points on either side of the line
     m=(sumprod-n*b.x*b.y)/(sumsqr-n*b.x*b.x);
     c=(b.y*sumsqr-b.x*sumprod)/(sumsqr-n*b.x*b.x);
     printf("y= %f x + %f",m,c);
@@ -77,6 +84,7 @@ int main(){
             linecount(xscale*(i+1)*10,line(m,c,xscale*(i+1)*10),xscale,yscale);
         }
         check='n';
+	//This is an option to print the original readings
         printf("\nPlot the readings?(y/n): ");
         scanf("%c",&check);
         scanf("%c",&check);
