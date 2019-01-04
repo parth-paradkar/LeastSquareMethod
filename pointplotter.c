@@ -1,6 +1,5 @@
 #include <stdio.h>
-/*Problem statement- Write a program to output
-the approximate position of a point in the graph when the scale is given*/
+/*program to output the approximate position of a point in the graph when the scale is given*/
 
 //This structure store original location and approximate location on graph
 typedef struct location{
@@ -8,13 +7,7 @@ typedef struct location{
     float prev;
     float line;
 }location;
-//Doubt in passing pointers to structures to functions
-/*struct location x;
-struct location y;
-struct location *px;
-struct location *py;
-px=&x;
-py=&y;*/
+
 
 /*Function outputs number of lines above/after*/
 location func_lines(float p,float scale){
