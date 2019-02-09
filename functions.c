@@ -1,8 +1,11 @@
 #include <stdio.h>
+//This file has the necessary functions and definitions
 /*Problem statement- Write a program to output
 the approximate position of a point in the graph when the scale is given*/
 
 //This structure store original location and approximate location on graph
+
+
 typedef struct location{
     float apna;
     float prev;
