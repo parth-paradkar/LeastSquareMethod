@@ -9,7 +9,6 @@ typedef struct z{
 }pointset;
 
 /*This function returns a set of averages of x and y coordinates*/
-//WORKING
 pointset mean(pointset a[100],int n){
     pointset res;
     int i;
@@ -40,59 +39,72 @@ int main(){
     float sumprod=0;
     char check;
     float xscale,yscale;
-    printf("Enter the number of readings: ");
-    scanf("%d",&n);
-    if(n==1){
-        printf("Invalid input!More than one reading is required.");
-        return 0;
-    }
-	if(n>100){
-		printf("Maximum 100 readings can be plotted!");
-		return 0;
+	FILE *data;
+	data = fopen("data.txt", "w");
+	if(data == NULL){
+		printf("Error in creating file\n");
 	}
-    for(i=0;i<n;i++){
-        printf("Enter the x coordinate: ");
-        scanf("%f",&a[i].x);
-        printf("Enter the y coordinate: ");
-        scanf("%f",&a[i].y);
-    }
-    for(i=0;i<n;i++){
-        sumsqr+=(a[i].x)*(a[i].x);
-    }
-    for(i=0;i<n;i++){
-        sumprod+=(a[i].x)*(a[i].y);
-    }
-    b=mean(a,n);
-    /*printf("%f",b.x);
-    printf("%f",b.y);*/
-    //Formula for slope(m) and x intercept(c) according to the least square method
-    //This ensures equal number of points on either side of the line
-    m=(sumprod-n*b.x*b.y)/(sumsqr-n*b.x*b.x);
-    c=(b.y*sumsqr-b.x*sumprod)/(sumsqr-n*b.x*b.x);
-    printf("y= %f x + %f",m,c);
-    /*Introducing a new feature!!*/
-    printf("\nNeed help plotting the graph?(y/n): ");
-    scanf("%c",&check);
-    scanf("%c",&check);
-    if(check=='y'){
-        printf("Enter the scale for x axis in units/mm: ");
-        scanf("%f",&xscale);
-        printf("Enter the scale for y axis in units/mm: ");
-        scanf("%f",&yscale);
-        printf("\nFollowing are three points on the line");
-        for(i=0;i<3;i++){
-            linecount(xscale*(i+1)*10,line(m,c,xscale*(i+1)*10),xscale,yscale);
-        }
-        check='n';
-	//This is an option to print the original readings
-        printf("\nPlot the readings?(y/n): ");
-        scanf("%c",&check);
-        scanf("%c",&check);
-        if(check=='y'){
-            for(i=0;i<n;i++){
-                linecount(a[i].x,a[i].y,xscale,yscale);
-            }
-        }
-    }
+	else{
+		printf("Enter the number of readings: ");
+		scanf("%d",&n);
+		if(n==1){
+		    printf("Invalid input! More than one reading is required.");
+		    return 0;
+		}
+		if(n>100){
+			printf("Maximum 100 readings can be plotted!");
+			return 0;
+		}
+		fprintf(data, "The coordinates you entered are: \n");
+		for(i=0;i<n;i++){
+		    printf("Enter the x coordinate of point no. %d: ", i+1);
+		    scanf("%f",&a[i].x);
+		    printf("Enter the y coordinate of point no. %d: ", i+1);
+		    scanf("%f",&a[i].y);
+			fprintf(data, "(%f,%f)\n", a[i].x, a[i].y);
+		}
+		for(i=0;i<n;i++){
+		    sumsqr+=(a[i].x)*(a[i].x);
+		}
+		for(i=0;i<n;i++){
+		    sumprod+=(a[i].x)*(a[i].y);
+		}
+		b=mean(a,n);
+		//Formula for slope(m) and x intercept(c) according to the least square method
+		//This ensures equal number of points on either side of the line
+
+		//Line is obtained in this step
+		fprintf(data, "\nThe line obtained from the least square method is: \n");
+		m=(sumprod-n*b.x*b.y)/(sumsqr-n*b.x*b.x);
+		c=(b.y*sumsqr-b.x*sumprod)/(sumsqr-n*b.x*b.x);
+		fprintf(data, "%fx+%f\n", m, c);
+		printf("y= %f x + %f",m,c);
+		printf("\nNeed help plotting the graph?(y/n): ");
+		scanf("%c",&check);
+		scanf("%c",&check);
+		if(check=='y'){
+		    printf("Enter the scale for x axis in units/mm: ");
+		    scanf("%f",&xscale);
+		    printf("Enter the scale for y axis in units/mm: ");
+		    scanf("%f",&yscale);
+		    printf("\nFollowing are three points on the line");
+			fprintf(data, "The points on the line obtained are:\n");
+		    for(i=0;i<3;i++){
+		        linecount(xscale*(i+1)*10,line(m,c,xscale*(i+1)*10),xscale,yscale);
+				fprintf(data, "(%f,%f)\n", xscale*(i+1)*10, line(m,c,xscale*(i+1)*10));
+		    }
+		    check='n';
+		//This is an option to print the original readings
+		    printf("\nPlot the readings?(y/n): ");
+		    scanf("%c",&check);
+		    scanf("%c",&check);
+		    if(check=='y'){
+		        for(i=0;i<n;i++){
+		            linecount(a[i].x,a[i].y,xscale,yscale);
+		        }
+		    }
+		}
+	}
+	fclose(data);
     return 0;
 }

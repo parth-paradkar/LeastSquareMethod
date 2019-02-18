@@ -35,6 +35,8 @@ location func_lines(float p,float scale){
     return r;
 }
 
+//This gives the number of lines to be counted after/before a multiple of 10 of the scale.
+//Multiples of 10 are plotted on the graph.
 void linecount(float x,float y,float xscale,float yscale){
     location xf,yf;
     int xline,yline;
