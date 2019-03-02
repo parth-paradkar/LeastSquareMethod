@@ -1,3 +1,4 @@
+
 import matplotlib.pyplot as plt
 import sys
 
@@ -106,19 +107,25 @@ class Pointset():
 
 def point_parse(a):
     temp = a
-    temp = temp[1:4]
+    temp = temp[1:-1]
     temp_x, temp_y = temp.split(',')
-    return Point(int(temp_x), int(temp_y))
+    try:
+        return Point(int(temp_x), int(temp_y))
+
+    except:
+        return Point(float(temp_x), float(temp_y))
 
 
 def test():
 
     # a = sys.argv[1:]
-    a = ['(1,3)', '(2,1)', '(3,5)', '(4,7)']
+    a = ['(1,1)', '(2.2,3.7)', '(3.6,5.9)', '(4.3,7.2)']
     points = Pointset(a)
-    plt.plot(points.x_list, points.y_new_list, label='line', color='red')
+    line = 'y = ({}) x + ({})'.format(round(points.calc_m, 3), round(points.calc_c, 3))
+    plt.plot(points.x_list, points.y_new_list, label=line, color='red')
     plt.scatter(points.x_list, points.y_new_list, s=100, color='red')
     plt.scatter(points.x_list, points.y_list, s=100)
+    plt.legend()
 
     plt.show()
 
