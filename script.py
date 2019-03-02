@@ -1,8 +1,9 @@
 
 import matplotlib.pyplot as plt
 import sys
+import itertools
 
-
+# a = Point(1,2)
 class Point():
    # scale in units/mm
     x_scale = 0.1
@@ -122,12 +123,23 @@ def test():
     a = ['(1,1)', '(2.2,3.7)', '(3.6,5.9)', '(4.3,7.2)']
     points = Pointset(a)
     line = 'y = ({}) x + ({})'.format(round(points.calc_m, 3), round(points.calc_c, 3))
-    plt.plot(points.x_list, points.y_new_list, label=line, color='red')
-    plt.scatter(points.x_list, points.y_new_list, s=100, color='red')
-    plt.scatter(points.x_list, points.y_list, s=100)
+    plt.plot(points.x_list, points.y_new_list, label=line, color='red',alpha=0.5)
+    plt.scatter(points.x_list, points.y_new_list, s=100, color='red',alpha=0.8)
+    plt.scatter(points.x_list, points.y_list, s=100,alpha=0.5)
+
+    for i in points.point_list:
+        plt.annotate([i.x,i.y],(i.x,i.y),color='b',horizontalalignment = 'right',verticalalignment = 'baseline',fontsize = 14,rotation=0)
+
+    new_list = list(zip(points.x_list, points.y_new_list))
+    for point in new_list:
+        plt.annotate([round(point[0], 3),round(point[1], 3)], (point[0],point[1]),color='r',horizontalalignment='left',verticalalignment = 'top',fontsize = 12,rotation=0)
+
+
+    plt.annotate("@parthmax99",(3,2),color='g',fontsize=12)
     plt.legend()
 
     plt.show()
 
 
 test()
+
