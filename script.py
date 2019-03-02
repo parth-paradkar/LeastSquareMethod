@@ -130,4 +130,17 @@ def test():
     plt.show()
 
 
-test()
+# test()
+
+def main():
+    a = sys.argv[1:]
+    points = Pointset(a)
+    line = 'y = ({}) x + ({})'.format(round(points.calc_m, 3), round(points.calc_c, 3))
+    plt.plot(points.x_list, points.y_new_list, label=line, color='red')
+    plt.scatter(points.x_list, points.y_new_list, s=100, color='red')
+    plt.scatter(points.x_list, points.y_list, s=100)
+    plt.legend()
+    plt.show()
+
+
+main()
