@@ -7,9 +7,6 @@ https://github.com/parthmax99/LeastSquareMethod
 
 import matplotlib.pyplot as plt
 import sys
-import itertools
-
-# a = Point(1,2)
 
 
 class Point():
@@ -47,6 +44,7 @@ class Point():
 
 class Pointset():
     def __init__(self, point_list):
+        self.str_point_list = point_list
         self.n = len(point_list)
         self.point_list = []
         self.x_list = []
@@ -61,12 +59,10 @@ class Pointset():
             self.y_list.append(point.y)
 
     def __str__(self):
-        # return self.point_list
-        pass
+        return str(self.str_point_list)
 
     def __repr__(self):
-        # return self.point_list
-        pass
+        return str(self.str_point_list)
 
     @property
     def points_mean(self):
@@ -128,7 +124,7 @@ def point_parse(a):
 def main():
     a = sys.argv[1:]
     temp_points = []
-    # a = ['(1,1)', '(2.2,3.7)', '(3.6,5.9)', '(4.3,7.2)']
+
     try:
         name, file_ext = a[0].split('.')
         if file_ext == 'csv':
@@ -155,6 +151,7 @@ def main():
 
     plt.legend()
     plt.show()
+    print(points)
 
 
 main()
