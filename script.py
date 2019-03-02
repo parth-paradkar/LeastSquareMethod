@@ -143,15 +143,15 @@ def main():
 
     line = 'y = ({}) x + ({})'.format(round(points.calc_m, 3), round(points.calc_c, 3))
     plt.plot(points.x_list, points.y_new_list, label=line, color='red', alpha=0.5)
-    plt.scatter(points.x_list, points.y_new_list, s=100, color='red', alpha=0.8)
-    plt.scatter(points.x_list, points.y_list, s=100, alpha=0.5)
+    plt.scatter(points.x_list, points.y_new_list, s=50, color='red', alpha=0.8)
+    plt.scatter(points.x_list, points.y_list, s=50, alpha=0.5)
 
     for i in points.point_list:
-        plt.annotate([i.x, i.y], (i.x, i.y), color='b', horizontalalignment='right', verticalalignment='baseline', fontsize=14, rotation=0)
+        plt.annotate([i.x, i.y], (i.x, i.y), color='b', horizontalalignment='right', verticalalignment='baseline', fontsize=8, rotation=0)
 
     new_list = list(zip(points.x_list, points.y_new_list))
     for point in new_list:
-        plt.annotate([round(point[0], 3), round(point[1], 3)], (point[0], point[1]), color='r', horizontalalignment='left', verticalalignment='top', fontsize=12, rotation=0)
+        plt.annotate([round(point[0], 3), round(point[1], 3)], (point[0], point[1]), color='r', horizontalalignment='left', verticalalignment='top', fontsize=8, rotation=0)
 
     plt.legend()
     plt.show()
