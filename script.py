@@ -117,6 +117,7 @@ def test():
     a = ['(1,3)', '(2,1)', '(3,5)', '(4,7)']
     points = Pointset(a)
     plt.plot(points.x_list, points.y_new_list, label='line', color='red')
+    plt.scatter(points.x_list, points.y_new_list, s=100, color='red')
     plt.scatter(points.x_list, points.y_list, s=100)
 
     plt.show()
