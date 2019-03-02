@@ -49,7 +49,6 @@ class Pointset():
         self.point_list = []
         self.x_list = []
         self.y_list = []
-        # self.y_new_list = []
         for element in point_list:
             temp_element = point_parse(element)
             self.point_list.append(temp_element)
@@ -73,8 +72,6 @@ class Pointset():
             tot_y += temp_point.y
 
         return Point(tot_x / len(self.point_list), tot_y / len(self.point_list))
-        # self.mean_x = tot_x / len(self.point_list)
-        # self.mean_y = tot_y / len(self.point_list)
 
     @property
     def sum_squared(self):
@@ -151,7 +148,6 @@ def main():
 
     plt.legend()
     plt.show()
-    print(points)
 
 
 main()
