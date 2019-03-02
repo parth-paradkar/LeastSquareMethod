@@ -1,4 +1,3 @@
-
 import matplotlib.pyplot as plt
 import sys
 
@@ -116,25 +115,22 @@ def point_parse(a):
         return Point(float(temp_x), float(temp_y))
 
 
-def test():
-
-    # a = sys.argv[1:]
-    a = ['(1,1)', '(2.2,3.7)', '(3.6,5.9)', '(4.3,7.2)']
-    points = Pointset(a)
-    line = 'y = ({}) x + ({})'.format(round(points.calc_m, 3), round(points.calc_c, 3))
-    plt.plot(points.x_list, points.y_new_list, label=line, color='red')
-    plt.scatter(points.x_list, points.y_new_list, s=100, color='red')
-    plt.scatter(points.x_list, points.y_list, s=100)
-    plt.legend()
-
-    plt.show()
-
-
-# test()
-
 def main():
     a = sys.argv[1:]
-    points = Pointset(a)
+    temp_points = []
+    # a = ['(1,1)', '(2.2,3.7)', '(3.6,5.9)', '(4.3,7.2)']
+    try:
+        name, file_ext = a[0].split('.')
+        if file_ext == 'csv':
+            with open(a[0], 'r') as f:
+                for line in f:
+                    temp_x, temp_y = line.split(',')
+                    temp_points.append(('({},{})'.format(temp_x, temp_y)))
+            points = Pointset(temp_points)
+
+    except ValueError:
+        points = Pointset(a)
+
     line = 'y = ({}) x + ({})'.format(round(points.calc_m, 3), round(points.calc_c, 3))
     plt.plot(points.x_list, points.y_new_list, label=line, color='red')
     plt.scatter(points.x_list, points.y_new_list, s=100, color='red')
