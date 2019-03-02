@@ -1,3 +1,10 @@
+'''
+Script produces line by the least square method from a given set of xy-coordinates
+Project created by Parth Paradkar and Sarthak Johnson Prasad
+https://github.com/parthmax99/LeastSquareMethod
+
+'''
+
 import matplotlib.pyplot as plt
 import sys
 import itertools
@@ -146,7 +153,6 @@ def main():
     for point in new_list:
         plt.annotate([round(point[0], 3), round(point[1], 3)], (point[0], point[1]), color='r', horizontalalignment='left', verticalalignment='top', fontsize=12, rotation=0)
 
-    plt.annotate("@parthmax99", (3, 2), color='g', fontsize=12)
     plt.legend()
     plt.show()
 
