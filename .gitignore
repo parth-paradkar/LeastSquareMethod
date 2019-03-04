@@ -1,3 +1,4 @@
+*.csv
 *.c
 data.txt
 leastsquare2.c
