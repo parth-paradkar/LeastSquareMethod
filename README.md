@@ -1,8 +1,38 @@
-This program helps in plotting data that follows linear variation using least square method. It gives the most closely fitting graph.
-Scale of each axes can be given as inputs.
-The program will output the number of lines to be left after each 10 divisions on the graph.
-A maximum of 100 points may be plotted using this program.
+### LeastSquareMethod
 
-To do: 
-1) Convert code to python.
-2) Introduce matplotlib to plot the graph
+Plot a linear graph from a set of given coordinates that crosses the least number of squares on the graph.
+
+##How to install:
+For Linux users
+
+1)Open a new terminal window and create a folder in the desiredd location
+
+```
+mkdir leastsquare
+````
+2)Clone this repository in this directory
+
+```
+git clone https://github.com/parthmax99/LeastSquareMethod.git
+```
+3)You are good to go!
+
+##Usage
+
+1)If the data is stored in a CSV file, enter the file path(filename in case the file is present in the current directory as an argument
+
+![Terminal command for CSV file](/images/terminal_command_csv.png)
+
+2) For a sample dataset the result will be as follows:
+
+![Example 1](/images/result.png)
+
+3) For a small number of points, you might prefer feeding the data through the terminal itself. The points must be in the format *[x,y]*
+
+![Terminal input](/images/terminal_command1.png)
+
+4) Output:
+
+![Example 2](/images/result2.png)
+
+
