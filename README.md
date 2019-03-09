@@ -6,21 +6,21 @@ Plot a linear graph from a set of given coordinates that crosses the least numbe
 ## How to install:
 For Linux users
 
-1)Open a new terminal window and create a folder in the desiredd location
+1) Open a new terminal window and create a folder in the desiredd location
 
 ```
 mkdir leastsquare
 ````
-2)Clone this repository in this directory
+2) Clone this repository in this directory
 
 ```
 git clone https://github.com/parthmax99/LeastSquareMethod.git
 ```
-3)You are good to go!
+3) You are good to go!
 
 ## Usage
 
-1)If the data is stored in a CSV file, enter the file path(filename in case the file is present in the current directory as an argument
+1) If the data is stored in a CSV file, enter the file path(filename in case the file is present in the current directory as an argument
 
 ![Terminal command for CSV file](/images/terminal_command_csv.png)
 
