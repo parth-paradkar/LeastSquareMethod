@@ -4,10 +4,10 @@ import sys
 
 def main():
     arg = sys.argv[1:]
-    x_scale = float(arg[0])
-    y_scale = float(arg[1])
+    x_scale = float(arg[1])
+    y_scale = float(arg[2])
     script.Point.set_scales(x_scale, y_scale)
-    file_path = arg[2]
+    file_path = arg[0]
     pt_list = []
     with open(file_path, 'r') as f:
         for line in f:
