@@ -19,7 +19,7 @@ git clone https://github.com/parthmax99/LeastSquareMethod.git
 
 ## Usage
 
-1) If the data is stored in a CSV file, enter the file path(filename in case the file is present in the current directory as an argument
+1) If the data is stored in a CSV file, enter the file path(filename in case the file is present in the current directory as an argument)
 
 ![Terminal command for CSV file](/images/terminal_command_csv.png)
 
